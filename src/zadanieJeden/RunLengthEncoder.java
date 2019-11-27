@@ -1,12 +1,12 @@
 package zadanieJeden;
 
-public class RunLengthEncoder {
+ class RunLengthEncoder {
 
-    public String encoder ( String plainText){
-        return "A4,B3,C1,112";
+    String encoder(String plainText){
+        return "A4,B3,C1,112"+ plainText;
     }
 
-    public String decode (String encodedText){
-        return "AAAABBBC111111111111";
+    String decode(String encodedText){
+        return "AAAABBBC111111111111"+ encodedText;
     }
 }
