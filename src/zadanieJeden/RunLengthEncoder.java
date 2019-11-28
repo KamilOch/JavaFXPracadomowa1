@@ -19,7 +19,7 @@ class RunLengthEncoder {
             }
         }
         encoderOutput = encoderOutput + numberSameChars;
-        return encoderOutput;
+        return encoderOutput + ",";
     }
 
     String decode(String encodedText) {

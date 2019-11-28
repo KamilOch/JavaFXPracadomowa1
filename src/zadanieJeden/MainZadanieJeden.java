@@ -74,13 +74,17 @@ public class MainZadanieJeden extends Application {
             enterButton.setOnAction(event -> {
                 if (codingRadioButton.isSelected()) {
                     outputData.clear();
-                    outputData.appendText(runLengthEncoder.encoder(inputData.getText()));
+                    if (!inputData.getText().contains(",")) {
+                        outputData.appendText(runLengthEncoder.encoder(inputData.getText()));
+                    } else outputData.appendText("Błąd! Niepoprawny znak: \",\" ");
                 } else if (decodingRadioButton.isSelected()) {
                     outputData.clear();
-                    outputData.appendText(runLengthEncoder.decode(inputData.getText()));
+                    if (inputData.getText().contains(",")) {
+                        outputData.appendText(runLengthEncoder.decode(inputData.getText()));
+                    } else outputData.appendText("Błąd! Brak znaków: \",\" ");
                 } else {
                     outputData.clear();
-                    outputData.appendText("Błąd!  Wybierz operacje kodowanie lub dekodowanie!");
+                    outputData.appendText("Błąd!  Wybierz typ operacji!");
                 }
             });
 
