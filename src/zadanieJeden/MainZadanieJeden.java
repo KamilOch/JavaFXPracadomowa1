@@ -7,9 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class MainZadanieJeden extends Application {
 
@@ -22,11 +20,9 @@ public class MainZadanieJeden extends Application {
 
             BorderPane root = new BorderPane();
             Scene scene = new Scene(root, 600, 300);
+            root.getStyleClass().add("primaryStage");
 
-            //TODO file with CSS style
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-            primaryStage.initStyle(StageStyle.TRANSPARENT);
-
 
             Label sourceLabel = new Label("Źródło:");
             sourceLabel.setLayoutX(0);
@@ -36,6 +32,7 @@ public class MainZadanieJeden extends Application {
             inputData.setPrefColumnCount(20);
             inputData.setLayoutX(0);
             inputData.setLayoutY(80);
+            inputData.getStyleClass().add("textField");
 
             Label resultLabel = new Label("Wynik operacji:");
             resultLabel.setLayoutX(0);
@@ -50,6 +47,7 @@ public class MainZadanieJeden extends Application {
             outputData.setPrefColumnCount(20);
             outputData.setLayoutX(0);
             outputData.setLayoutY(170);
+            outputData.getStyleClass().add("textField");
 
             Button enterButton = new Button("Wykonaj");
             enterButton.setLayoutX(0);
