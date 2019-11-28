@@ -3,25 +3,39 @@ package zadanieJeden;
 class RunLengthEncoder {
 
     String encoder(String plainText) {
-        char[] input = plainText.toCharArray();
+        char[] encoderInput = plainText.toCharArray();
 
-        String output = Character.toString(input[0]);
+        String encoderOutput = Character.toString(encoderInput[0]);
         int numberSameChars = 1;
 
-        for (int i = 1; i < input.length; i++) {
-            if (input[i] == input[(i - 1)]) {
+        for (int i = 1; i < encoderInput.length; i++) {
+            if (encoderInput[i] == encoderInput[(i - 1)]) {
                 numberSameChars++;
             } else {
-                output = output + numberSameChars+",";
-                numberSameChars=1;
-                char x = input[i];
-                output = output + x;
+                encoderOutput = encoderOutput + numberSameChars + ",";
+                numberSameChars = 1;
+                char x = encoderInput[i];
+                encoderOutput = encoderOutput + x;
             }
-        }  output = output + numberSameChars;
-        return output;
+        }
+        encoderOutput = encoderOutput + numberSameChars;
+        return encoderOutput;
     }
 
     String decode(String encodedText) {
-        return "AAAABBB111111111111" + encodedText;
+
+        String[] decoderInput = encodedText.split(",");
+        String decoderOutput = "";
+
+        for (String it : decoderInput) {
+            char encodedChar = it.charAt(0);
+            int numberOfEncodedChar = Integer.parseInt(it.substring(1));
+
+            for (int i = 0; i < numberOfEncodedChar; i++) {
+                decoderOutput += encodedChar;
+            }
+        }
+        return decoderOutput;
     }
+
 }
