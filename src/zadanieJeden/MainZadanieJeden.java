@@ -74,14 +74,15 @@ public class MainZadanieJeden extends Application {
             enterButton.setOnAction(event -> {
                 if (codingRadioButton.isSelected()) {
                     outputData.clear();
-                    if (!inputData.getText().contains(",")) {
-                        outputData.appendText(runLengthEncoder.encoder(inputData.getText()));
-                    } else outputData.appendText("Błąd! Niepoprawny znak: \",\" ");
+                    outputData.appendText(runLengthEncoder.encoder(inputData.getText()));
+
                 } else if (decodingRadioButton.isSelected()) {
                     outputData.clear();
-                    if (inputData.getText().contains(",")) {
+                    //TODO sprawdzenie
+//                    if (inputData.getText().matches("^(.[1-9][0-9]*,)*")) {
                         outputData.appendText(runLengthEncoder.decode(inputData.getText()));
-                    } else outputData.appendText("Błąd! Brak znaków: \",\" ");
+//                    } else outputData.appendText("Błąd wprowadzonych danych!");
+
                 } else {
                     outputData.clear();
                     outputData.appendText("Błąd!  Wybierz typ operacji!");
