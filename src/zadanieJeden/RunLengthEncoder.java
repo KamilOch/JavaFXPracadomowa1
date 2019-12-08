@@ -23,7 +23,7 @@ class RunLengthEncoder {
             }
         }
         encoderOutput = encoderOutput + numberSameChars;
-        return encoderOutput /*+ "," */;
+        return encoderOutput;
     }
 
     String decode(String encodedText) {
@@ -32,23 +32,23 @@ class RunLengthEncoder {
         char[] arrayChar = encodedTextPlusComma.toCharArray();
         String decoderOutput = "";
 
-        List<String> singleEncodedString = new ArrayList<>();
+        List<String> singleCodeList = prepareSingleCodeList(arrayChar);
 
-        String singleInput = "";
+        //List<String> singleCodeList = new ArrayList<>();
+//        String singleInput = "";
+//
+//        for (int i = 1; i < arrayChar.length; i++) {
+//
+//            singleInput += Character.toString(arrayChar[i - 1]);
+//
+//            if (Character.toString(arrayChar[i]).equals(",")) {
+//                singleCodeList.add(singleInput);
+//                singleInput = "";
+//                i++;
+//            }
+//        }
 
-        for (int i = 1; i < arrayChar.length; i++) {
-
-            singleInput += Character.toString(arrayChar[i - 1]);
-
-            if (Character.toString(arrayChar[i]).equals(",")) {
-                singleEncodedString.add(singleInput);
-                singleInput = "";
-                i++;
-            }
-
-        }
-
-        for (String it : singleEncodedString) {
+        for (String it : singleCodeList) {
 
             char encodedChar = it.charAt(0);
             int numberOfEncodedChar = Integer.parseInt(it.substring(1));
@@ -58,6 +58,24 @@ class RunLengthEncoder {
             }
         }
         return decoderOutput;
+    }
+
+    private List<String> prepareSingleCodeList( char[] arrayChar){
+        List<String> outputList = new ArrayList<>();
+
+        String singleInput = "";
+
+        for (int i = 1; i < arrayChar.length; i++) {
+
+            singleInput += Character.toString(arrayChar[i - 1]);
+
+            if (Character.toString(arrayChar[i]).equals(",")) {
+                outputList.add(singleInput);
+                singleInput = "";
+                i++;
+            }
+        }
+        return outputList;
     }
 
 }
