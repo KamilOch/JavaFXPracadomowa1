@@ -22,8 +22,7 @@ class RunLengthEncoder {
                 encoderOutput = encoderOutput + x;
             }
         }
-        encoderOutput = encoderOutput + numberSameChars;
-        return encoderOutput;
+        return encoderOutput + numberSameChars;
     }
 
     String decode(String encodedText) {
@@ -33,20 +32,6 @@ class RunLengthEncoder {
         String decoderOutput = "";
 
         List<String> singleCodeList = prepareSingleCodeList(arrayChar);
-
-        //List<String> singleCodeList = new ArrayList<>();
-//        String singleInput = "";
-//
-//        for (int i = 1; i < arrayChar.length; i++) {
-//
-//            singleInput += Character.toString(arrayChar[i - 1]);
-//
-//            if (Character.toString(arrayChar[i]).equals(",")) {
-//                singleCodeList.add(singleInput);
-//                singleInput = "";
-//                i++;
-//            }
-//        }
 
         for (String it : singleCodeList) {
 
@@ -60,15 +45,14 @@ class RunLengthEncoder {
         return decoderOutput;
     }
 
-    private List<String> prepareSingleCodeList( char[] arrayChar){
-        List<String> outputList = new ArrayList<>();
+    private List<String> prepareSingleCodeList(char[] arrayChar){
 
+        List<String> outputList = new ArrayList<>();
         String singleInput = "";
 
         for (int i = 1; i < arrayChar.length; i++) {
 
             singleInput += Character.toString(arrayChar[i - 1]);
-
             if (Character.toString(arrayChar[i]).equals(",")) {
                 outputList.add(singleInput);
                 singleInput = "";
