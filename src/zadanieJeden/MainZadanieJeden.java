@@ -76,7 +76,7 @@ public class MainZadanieJeden extends Application {
 
             } else if (decodingRadioButton.isSelected()) {
                 outputData.clear();
-                if (inputData.getText().matches("^.[1-9]+[0-9]*(,.[1-9]+[0-9]*)*")) {
+                if (inputData.getText().matches("^.[1-9][0-9]*(,.[1-9][0-9]*)*")) {
                     outputData.appendText(runLengthEncoder.decode(inputData.getText()));
                 } else outputData.appendText("Błąd wprowadzonych danych!");
 
